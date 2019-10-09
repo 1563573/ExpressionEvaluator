@@ -1,0 +1,12 @@
+<Whole Expression> ::= <Num-expression> <EOF>
+<Num-expression> ::= <Term> | <Addop> <Term> | <Num-expression> <Addop> <Term>
+    <Num-expression> ::= <Term> <Num-expression'> | <Addop> <Term> <Num-expression'>
+    <Num-expression'> ::= <Addop> <Term> <Num-expression'> | EMPTY
+<Addop> ::= + | -
+<Term> ::= <Factor> | <Term> <Mulop> <Factor>
+    <Term> ::= <Factor> <Term'>
+    <Term'> ::= <Mulop> <Factor> <Term'> | EMPTY
+<Mulop> ::= * | /
+<Factor> ::= <Num-const> | ( <Num-expression> )
+<Num-const> ::= <Unsigned-int> | <Addop> <Unsigned-int>
+<Unsigned-int> ::= <Digit> {Digit}
